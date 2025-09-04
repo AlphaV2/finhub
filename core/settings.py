@@ -45,12 +45,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #installed 
     'rest_framework',
+    'corsheaders',
     #local_apps
     'authentication',
+    
     
     ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,14 +61,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
+
+CORS_ALLOW_ALL_ORIGINS = True #for development only
 ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],   
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -149,3 +155,7 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": True,
 }
+
+#static file
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
