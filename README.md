@@ -60,8 +60,17 @@
 <h2 align="center">📂 Project Structure</h2>
 
 ```bash
-/core/            # Django project (settings, urls, views)
-templates/        # HTML templates (landing page)
-/static/          # CSS & JS
-frontend/         # optional React frontend (later phase)
-README.md
+## 📂 Project Structure
+finhub/
+│── authentication/          # JWT auth app (signup, login, tokens)
+│── core/                    # Django project settings & root urls
+│── static/                  # CSS, JS, images
+│   ├── css/
+│   └── js/
+│── templates/               # HTML templates
+│   └── landing/
+│── manage.py                # Django entry point
+│── requirements.txt         # Python dependencies
+│── .gitignore
+│── LICENSE
+│── README.md
