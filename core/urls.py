@@ -16,8 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from .views import home,dashboard,landing_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', landing_page, name="landing"),  # landing page
     path("api/v1/auth/", include("authentication.urls")),
+     path('api/auth/', include('authentication.urls')),  # auth endpoints
+    path('api/home/', home, name="home"),
+    path('api/dashboard/', dashboard, name="dashboard"),
 ]
+
+
