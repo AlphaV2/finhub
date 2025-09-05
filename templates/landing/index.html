@@ -31,11 +31,20 @@
   <section id="home" class="hero">
     <h2>FinHub: Gen Z Finance, Simplified</h2>
     <p>Learn, manage, and thrive with your money. Join the movement.</p>
-    <form id="early-access-form">
-      <input type="email" placeholder="Enter your email" required />
-      <button type="submit">Join Early Access</button>
-    </form>
-    <div id="access-msg" class="message"></div>
+    <form method="POST" action="{% url 'early_access_signup' %}">
+  {% csrf_token %}
+  <input type="email" name="email" placeholder="Enter your email" required />
+  <button type="submit">Join Early Access</button>
+</form>
+
+    <div id="access-msg" class="message">
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+
   </section>
 
   <!-- About -->
