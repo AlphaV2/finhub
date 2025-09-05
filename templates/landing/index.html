@@ -12,6 +12,22 @@
   <script src="{% static 'js/script.js' %}" defer></script>
 </head>
 <body>
+  <!-- Floating Background -->
+  <div class="floating-bg">
+    <div class="floating-symbol symbol-1">💰</div>
+    <div class="floating-symbol symbol-2">📊</div>
+    <div class="floating-symbol symbol-3">💳</div>
+    <div class="floating-symbol symbol-4">📈</div>
+    <div class="floating-symbol symbol-5">💎</div>
+    <div class="floating-symbol symbol-6">🚀</div>
+    <div class="floating-symbol symbol-7">⚡</div>
+    <div class="floating-symbol symbol-8">🎯</div>
+    <div class="floating-symbol symbol-9">✨</div>
+  </div>
+
+  <!-- Particles -->
+  <div class="particles" id="particles"></div>
+
   <!-- Navbar -->
   <header class="navbar">
     <h1 class="logo">FinHub</h1>
@@ -29,37 +45,47 @@
 
   <!-- Hero -->
   <section id="home" class="hero">
+    <div class="floating-icons">
+      <div class="floating-icon">💰</div>
+      <div class="floating-icon">📊</div>
+      <div class="floating-icon">🚀</div>
+    </div>
+    <div class="floating-icons right">
+      <div class="floating-icon">💎</div>
+      <div class="floating-icon">⚡</div>
+      <div class="floating-icon">🎯</div>
+    </div>
+    
     <h2>FinHub: Gen Z Finance, Simplified</h2>
     <p>Learn, manage, and thrive with your money. Join the movement.</p>
     <form method="POST" action="{% url 'early_access_signup' %}">
-  {% csrf_token %}
-  <input type="email" name="email" placeholder="Enter your email" required />
-  <button type="submit">Join Early Access</button>
-</form>
+      {% csrf_token %}
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Join Early Access</button>
+    </form>
 
     <div id="access-msg" class="message">
       {% if messages %}
         {% for message in messages %}
           <p>{{ message }}</p>
         {% endfor %}
-        {% endif %}
+      {% endif %}
     </div>
-
   </section>
 
   <!-- About -->
   <section id="about" class="about">
-    <h3>About Us</h3>
+    <h3 class="section-title">About Us</h3>
     <p>
       FinHub is building a smarter way for Gen Z to handle finance — 
       from taxes to savings, in a fun and easy-to-understand platform.
-      We mix learning with real tools so you don’t just read, you act.
+      We mix learning with real tools so you don't just read, you act.
     </p>
   </section>
 
   <!-- Features -->
   <section id="features" class="features">
-    <h3>Our Features</h3>
+    <h3 class="section-title">Our Features</h3>
     <div class="feature-block">
       <h4>Phase 1 (Now)</h4>
       <div class="cards">
@@ -81,7 +107,7 @@
 
   <!-- Contact -->
   <section id="contact" class="contact">
-    <h3>Contact Us</h3>
+    <h3 class="section-title">Contact Us</h3>
     <form id="contact-form">
       <input type="text" placeholder="Your Name" required />
       <input type="email" placeholder="Your Email" required />
@@ -95,6 +121,9 @@
   <footer>
     <p>© 2025 FinHub. All rights reserved.</p>
   </footer>
+
+  <!-- Success Message -->
+  <div id="success-popup" class="success-message"></div>
 
   <!-- Login Modal -->
   <div id="login-modal" class="modal">
