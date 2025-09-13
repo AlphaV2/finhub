@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     #local_apps
     'authentication',
+    'earlyaccess',
     
     
     ]

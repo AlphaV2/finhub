@@ -16,15 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from .views import home,dashboard,landing_page
+from .views import landing_page
+from core import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', landing_page, name="landing"),  # landing page
-    path("api/v1/auth/", include("authentication.urls")),
-     path('api/auth/', include('authentication.urls')),  # auth endpoints
-    path('api/home/', home, name="home"),
-    path('api/dashboard/', dashboard, name="dashboard"),
+    # Admin
+    path("admin/", admin.site.urls),
+
+    # Frontend pages
+    path("", landing_page, name="landing"),
+    # APIs
+    path("api/v1/auth/", include("authentication.urls")),   # Auth API
+    path("early-access/", include("earlyaccess.urls")),     # Early access API
+
 ]
 
 
